@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class mainclass {
-    private static int flag=0;
     //got this convert to fraction from stack overflow
     static private String convertDecimalToFraction(double x){
         if (x < 0){
@@ -22,7 +21,7 @@ public class mainclass {
         else
             return h1+"/"+k1;
     }
-    static void  displayMat(float[][] matrixdisp)
+    private static void  displayMat(float[][] matrixdisp)
     {
         for (int i=0;i<3;i++)
         {
@@ -31,11 +30,11 @@ public class mainclass {
                 System.out.print(convertDecimalToFraction(matrixdisp[i][j])+ "   ");
 
             }
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("***********************************************************");
     }
-    static float[][] pivot(float[][] piviotmat, int x, int y)
+    private static void pivot(float[][] piviotmat, int x, int y)
     {
         float value= piviotmat[x][y];
         float z=1/value;// value to piviot
@@ -45,7 +44,7 @@ public class mainclass {
             piviotmat[x][k] = piviotmat[x][k]  * z;//here we multiply the pivit
         }
         displayMat(piviotmat);
-        float multiplier = 0;
+        float multiplier;
         for (int l=0;l<3;l++)
         {
             if (l!=y) {
@@ -70,7 +69,6 @@ public class mainclass {
 
         }
 
-        return piviotmat;
     }
     public static void main(String[] args) {
         float[][] matrix;
@@ -93,7 +91,7 @@ public class mainclass {
             {
                 if (i==j&&matrix[i][j]!=1)
                 {
-                    matrix=   pivot(matrix,i,j);
+                    pivot(matrix, i, j);
 
                 }
             }
@@ -111,9 +109,6 @@ public class mainclass {
             }
         }
     }
-
-
-
 }
 
 
